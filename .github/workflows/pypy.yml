@@ -16,6 +16,9 @@ jobs:
       fail-fast: false
       matrix:
         tag:
+          - '2.7'
+          - '3.9'
+          - '3.10'
           - latest
     steps:
       - uses: actions/checkout@v3

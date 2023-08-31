@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH couchbase:latest
+FROM --platform=$TARGETOS/$TARGETARCH pypy:slim-bullseye
 
 LABEL author="MrAvox" maintainer="mravox@proton.me"
 

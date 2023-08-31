@@ -1,4 +1,4 @@
-name: build couchdb
+name: build pypy
 on:
   workflow_dispatch:
   schedule:
@@ -7,10 +7,10 @@ on:
     branches:
       - master
     paths:
-      - couchdb/**
+      - pypy/**
 jobs:
   push:
-    name: "images:couchdb_${{ matrix.tag }}"
+    name: "images:pypy_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -30,9 +30,9 @@ jobs:
           password: ${{ secrets.REGISTRY_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
-          context: ./couchdb
-          file: ./couchdb/${{ matrix.tag }}/Dockerfile
+          context: ./pypy
+          file: ./pypy/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/avoxmr/images:couchdb_${{ matrix.tag }}
+            ghcr.io/avoxmr/images:pypy_${{ matrix.tag }}
